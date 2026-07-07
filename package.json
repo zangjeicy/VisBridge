@@ -1,0 +1,56 @@
+{
+  "name": "visbridge",
+  "version": "1.0.0",
+  "description": "VisBridge (视界之桥) — 面向学生的数据可视化大屏学习项目",
+  "type": "module",
+  "lint-staged": {
+    "*.{ts,vue}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,less}": [
+      "prettier --write"
+    ]
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "echarts": "^5.5.0",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.2.2",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/node": "^20.11.30",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/test-utils": "^2.4.5",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.22.0",
+    "happy-dom": "^14.3.9",
+    "husky": "^9.0.11",
+    "less": "^4.2.0",
+    "lint-staged": "^15.2.2",
+    "msw": "^2.2.14",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.3",
+    "vite": "^5.2.8",
+    "vite-plugin-env-compatible": "^2.0.1",
+    "vitest": "^1.5.0",
+    "vue-tsc": "^2.0.11"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}
