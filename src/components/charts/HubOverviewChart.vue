@@ -20,8 +20,8 @@ const chartRef = ref<HTMLDivElement>();
 let chart: echarts.ECharts | null = null;
 
 const statusColors: Record<string, string> = {
-  good: '#00d4aa',
-  warning: '#fac858',
+  good: '#34d399',
+  warning: '#f59e0b',
   danger: '#ee6666',
 };
 
@@ -34,18 +34,18 @@ function buildSeriesOptions() {
       symbolSize: 80,
       itemStyle: {
         color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
-          { offset: 0, color: '#00d4aa' },
-          { offset: 0.5, color: '#0099cc' },
-          { offset: 1, color: '#004466' },
+          { offset: 0, color: '#8b5cf6' },
+          { offset: 0.5, color: '#a78bfa' },
+          { offset: 1, color: '#1a1233' },
         ]),
         shadowBlur: 40,
-        shadowColor: 'rgba(0, 212, 170, 0.6)',
+        shadowColor: 'rgba(139, 92, 246, 0.6)',
       },
       label: {
         show: true,
         position: 'bottom' as const,
         distance: 15,
-        color: '#00d4aa',
+        color: '#8b5cf6',
         fontSize: 16,
         fontWeight: 'bold' as const,
         formatter: '数据中枢',
@@ -59,7 +59,7 @@ function buildSeriesOptions() {
       symbolSize: 200,
       itemStyle: {
         color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
-          { offset: 0, color: 'rgba(0, 212, 170, 0.1)' },
+          { offset: 0, color: 'rgba(139, 92, 246, 0.1)' },
           { offset: 1, color: 'transparent' },
         ]),
       },
@@ -72,7 +72,7 @@ function buildSeriesOptions() {
       symbolSize: 150,
       itemStyle: {
         color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
-          { offset: 0, color: 'rgba(0, 153, 204, 0.08)' },
+          { offset: 0, color: 'rgba(167, 139, 250, 0.08)' },
           { offset: 1, color: 'transparent' },
         ]),
       },
@@ -88,13 +88,13 @@ function buildSeriesOptions() {
         ],
       })),
       lineStyle: {
-        color: 'rgba(0, 212, 170, 0.3)',
+        color: 'rgba(139, 92, 246, 0.3)',
         width: 2,
         curveness: 0.15,
       },
       effect: {
         show: true,
-        color: '#00d4aa',
+        color: '#a78bfa',
         trailLength: 0.8,
         period: 3,
       },
@@ -120,7 +120,7 @@ function buildSeriesOptions() {
           show: true,
           position: 'bottom' as const,
           distance: 5,
-          color: '#e6edf3',
+          color: '#e2e8f3',
           fontSize: 12,
         },
         status: node.status,
@@ -147,8 +147,8 @@ function initChart() {
     backgroundColor: 'transparent',
     tooltip: {
       trigger: 'item',
-      backgroundColor: 'rgba(10, 30, 50, 0.95)',
-      borderColor: 'rgba(0, 212, 170, 0.3)',
+      backgroundColor: 'rgba(15, 11, 30, 0.95)',
+      borderColor: 'rgba(139, 92, 246, 0.3)',
       borderWidth: 1,
       padding: [12, 16],
       textStyle: {
@@ -162,12 +162,12 @@ function initChart() {
           data?: { status?: string; description?: string };
         };
         const statusText: Record<string, string> = {
-          good: '<span style="color:#00d4aa">运行正常</span>',
-          warning: '<span style="color:#fac858">需要关注</span>',
+          good: '<span style="color:#34d399">运行正常</span>',
+          warning: '<span style="color:#f59e0b">需要关注</span>',
           danger: '<span style="color:#ee6666">异常告警</span>',
         };
         return `
-          <div style="font-weight:bold;font-size:14px;margin-bottom:8px;color:#00d4aa">${p.name}</div>
+          <div style="font-weight:bold;font-size:14px;margin-bottom:8px;color:#8b5cf6">${p.name}</div>
           <div style="margin-bottom:4px">状态：${statusText[p.data?.status || ''] || '未知'}</div>
           <div style="margin-bottom:4px">活跃度：${p.value || 0}</div>
           <div style="color:#8b949e;font-size:12px">${p.data?.description || ''}</div>

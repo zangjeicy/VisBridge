@@ -35,12 +35,12 @@ function initChart() {
     xAxis: {
       type: 'category',
       data: props.data.map((d) => d.date),
-      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
+      axisLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.2)' } },
       axisLabel: { color: '#8b949e', fontSize: 11 },
     },
     yAxis: {
       type: 'value',
-      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.05)' } },
+      splitLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.05)' } },
       axisLabel: {
         color: '#8b949e',
         formatter: (v: number) => (v >= 1000 ? `${(v / 1000).toFixed(0)}k` : `${v}`),
@@ -53,13 +53,13 @@ function initChart() {
         itemStyle: {
           borderRadius: [4, 4, 0, 0],
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: '#0099cc' },
-            { offset: 1, color: 'rgba(0, 180, 216, 0.2)' },
+            { offset: 0, color: '#8b5cf6' },
+            { offset: 1, color: 'rgba(139, 92, 246, 0.2)' },
           ]),
         },
         barWidth: '50%',
         emphasis: {
-          itemStyle: { color: '#00b4d8' },
+          itemStyle: { color: '#a78bfa' },
         },
       },
     ],

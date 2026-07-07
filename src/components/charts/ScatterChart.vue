@@ -40,16 +40,16 @@ function initChart() {
       nameLocation: 'middle' as const,
       nameGap: 25,
       nameTextStyle: { color: '#8b949e' },
-      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
+      axisLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.2)' } },
       axisLabel: { color: '#8b949e' },
-      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.05)' } },
+      splitLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.05)' } },
     },
     yAxis: {
       name: '订单量',
       nameTextStyle: { color: '#8b949e' },
-      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
+      axisLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.2)' } },
       axisLabel: { color: '#8b949e' },
-      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.05)' } },
+      splitLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.05)' } },
     },
     series: [
       {
@@ -57,9 +57,9 @@ function initChart() {
         data: props.data.map((d) => [d.x, d.y]),
         symbolSize: 8,
         itemStyle: {
-          color: '#fac858',
+          color: '#f59e0b',
           shadowBlur: 10,
-          shadowColor: 'rgba(250, 200, 88, 0.5)',
+          shadowColor: 'rgba(245, 158, 11, 0.5)',
         },
       },
     ],

@@ -45,12 +45,12 @@ function initChart() {
         avoidLabelOverlap: false,
         itemStyle: {
           borderRadius: 4,
-          borderColor: '#0a1628',
+          borderColor: '#0f0b1e',
           borderWidth: 3,
         },
         label: { show: false },
         emphasis: {
-          label: { show: true, fontSize: 14, fontWeight: 'bold', color: '#e6edf3' },
+          label: { show: true, fontSize: 14, fontWeight: 'bold', color: '#e2e8f0' },
           scaleSize: 10,
         },
         data: props.data,

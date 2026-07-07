@@ -37,10 +37,10 @@ function initChart() {
       indicator: props.indicators,
       axisName: { color: '#8b949e', fontSize: 11 },
       splitArea: {
-        areaStyle: { color: ['rgba(0, 180, 216, 0.05)', 'rgba(0, 180, 216, 0.1)'] },
+        areaStyle: { color: ['rgba(139, 92, 246, 0.05)', 'rgba(139, 92, 246, 0.1)'] },
       },
-      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
-      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.1)' } },
+      axisLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.2)' } },
+      splitLine: { lineStyle: { color: 'rgba(139, 92, 246, 0.1)' } },
     },
     series: [
       {
@@ -49,9 +49,9 @@ function initChart() {
           {
             value: props.values,
             name: '当前表现',
-            areaStyle: { color: 'rgba(0, 212, 170, 0.2)' },
-            lineStyle: { color: '#00d4aa', width: 2 },
-            itemStyle: { color: '#00d4aa' },
+            areaStyle: { color: 'rgba(245, 158, 11, 0.2)' },
+            lineStyle: { color: '#f59e0b', width: 2 },
+            itemStyle: { color: '#f59e0b' },
           },
         ],
       },

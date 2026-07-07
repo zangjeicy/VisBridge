@@ -121,7 +121,7 @@ const formattedValue = computed(() => {
   font-weight: 700;
   color: @text-primary;
   font-family: 'DIN', 'Courier New', monospace;
-  text-shadow: 0 0 10px rgba(0, 180, 216, 0.3);
+  text-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
 }
 
 .card-trend {

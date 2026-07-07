@@ -67,11 +67,11 @@ const layoutStyle = computed(() => {
   top: 0;
   left: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(0, 180, 216, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(0, 212, 170, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 50%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(245, 158, 11, 0.04) 0%, transparent 50%),
     linear-gradient(180deg, @deep-blue 0%, @ink-blue 100%);
   border-radius: 4px;
-  box-shadow: 0 0 60px rgba(0, 180, 216, 0.1);
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.1);
 }
 
 .dashboard-container {
@@ -88,7 +88,7 @@ const layoutStyle = computed(() => {
   justify-content: space-between;
   height: 80px;
   padding: 0 @spacing-md;
-  background: linear-gradient(180deg, rgba(13, 33, 55, 0.95) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(26, 18, 51, 0.95) 0%, transparent 100%);
   border-bottom: 1px solid @border-color;
   position: relative;
   overflow: hidden;
@@ -100,7 +100,7 @@ const layoutStyle = computed(() => {
   top: 0;
   width: 200px;
   height: 100%;
-  background: linear-gradient(90deg, rgba(0, 180, 216, 0.05), transparent);
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.05), transparent);
 }
 
 .header-decoration-left {
@@ -148,7 +148,7 @@ const layoutStyle = computed(() => {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: rgba(0, 180, 216, 0.3);
+    background: rgba(139, 92, 246, 0.3);
 
     &.active {
       background: @jade-green;
