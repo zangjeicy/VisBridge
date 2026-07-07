@@ -1,6 +1,6 @@
 <template>
   <div class="section-title">
-    <span class="title-decoration"></span>
+    <span class="title-decoration" />
     <span class="title-text">{{ title }}</span>
   </div>
 </template>
@@ -21,7 +21,7 @@ defineProps<{ title: string }>();
   .title-decoration {
     width: 4px;
     height: 18px;
-    background: linear-gradient(180deg, @primary-color, #a371f7);
+    background: linear-gradient(180deg, @cyan-blue, @jade-green);
     border-radius: 2px;
   }
 

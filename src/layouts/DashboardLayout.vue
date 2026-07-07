@@ -2,15 +2,27 @@
   <div class="dashboard-layout" :style="layoutStyle">
     <div class="dashboard-container">
       <header class="dashboard-header">
+        <div class="header-decoration-left" />
+        <div class="header-decoration-right" />
         <div class="header-left">
-          <h1 class="header-title">VisBridge 视界之桥</h1>
-          <span class="header-subtitle">数据可视化大屏</span>
+          <h1 class="header-title">智能教学数据中心</h1>
+          <span class="header-subtitle">VisBridge 视界之桥</span>
         </div>
         <div class="header-center">
+          <div class="status-dots">
+            <span class="status-dot active" />
+            <span class="status-dot" />
+            <span class="status-dot" />
+          </div>
           <DataTime />
+          <div class="status-dots">
+            <span class="status-dot" />
+            <span class="status-dot" />
+            <span class="status-dot active" />
+          </div>
         </div>
         <div class="header-right">
-          <span class="update-time" v-if="store.lastUpdateTime">
+          <span v-if="store.lastUpdateTime" class="update-time">
             数据更新：{{ store.lastUpdateTime }}
           </span>
         </div>
@@ -30,15 +42,21 @@ import { useDashboardStore } from '@/stores/dashboard';
 import { useScreenScale } from '@/composables/useScreenScale';
 
 const store = useDashboardStore();
-const { scale } = useScreenScale();
+const { scale, screenWidth, screenHeight } = useScreenScale();
+const DESIGN_W = 1920;
+const DESIGN_H = 1080;
 
-const layoutStyle = computed(() => ({
-  transform: `scale(${scale.value})`,
-  transformOrigin: 'top left',
-  width: '1920px',
-  height: '1080px',
-  position: 'relative' as const,
-}));
+const layoutStyle = computed(() => {
+  const s = scale.value;
+  const offsetX = (screenWidth.value - DESIGN_W * s) / 2;
+  const offsetY = (screenHeight.value - DESIGN_H * s) / 2;
+  return {
+    transform: `translate(${offsetX}px, ${offsetY}px) scale(${s})`,
+    transformOrigin: '0 0',
+    width: `${DESIGN_W}px`,
+    height: `${DESIGN_H}px`,
+  };
+});
 </script>
 
 <style scoped lang="less">
@@ -46,14 +64,14 @@ const layoutStyle = computed(() => ({
 
 .dashboard-layout {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -960px;
-  margin-top: -540px;
+  top: 0;
+  left: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(84, 112, 198, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 50%, rgba(145, 204, 117, 0.06) 0%, transparent 50%),
-    linear-gradient(180deg, #0a0e27 0%, #0d1b3e 100%);
+    radial-gradient(ellipse at 20% 50%, rgba(0, 180, 216, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(0, 212, 170, 0.04) 0%, transparent 50%),
+    linear-gradient(180deg, @deep-blue 0%, @ink-blue 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 60px rgba(0, 180, 216, 0.1);
 }
 
 .dashboard-container {
@@ -70,30 +88,73 @@ const layoutStyle = computed(() => ({
   justify-content: space-between;
   height: 80px;
   padding: 0 @spacing-md;
-  background: linear-gradient(180deg, rgba(20, 30, 70, 0.9) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(13, 33, 55, 0.95) 0%, transparent 100%);
   border-bottom: 1px solid @border-color;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-decoration-left,
+.header-decoration-right {
+  position: absolute;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 180, 216, 0.05), transparent);
+}
+
+.header-decoration-left {
+  left: 0;
+}
+
+.header-decoration-right {
+  right: 0;
+  transform: rotate(180deg);
 }
 
 .header-left {
   display: flex;
-  align-items: baseline;
-  gap: @spacing-md;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .header-title {
   font-size: @font-xl;
   font-weight: 700;
-  background: linear-gradient(90deg, #58a6ff, #a371f7);
+  background: linear-gradient(90deg, @lake-blue, @jade-green);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
 }
 
 .header-subtitle {
-  font-size: @font-sm;
+  font-size: @font-xs;
   color: @text-secondary;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
+}
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: @spacing-md;
+}
+
+.status-dots {
+  display: flex;
+  gap: 6px;
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 180, 216, 0.3);
+
+    &.active {
+      background: @jade-green;
+      box-shadow: 0 0 10px @jade-green;
+    }
+  }
 }
 
 .header-right {

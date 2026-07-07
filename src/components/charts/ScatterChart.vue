@@ -1,7 +1,7 @@
 <template>
-  <div class="chart-wrapper dashboard-card">
+  <div class="chart-wrapper">
     <SectionTitle :title="title" />
-    <div ref="chartRef" class="chart-body"></div>
+    <div ref="chartRef" class="chart-body" />
   </div>
 </template>
 
@@ -37,19 +37,19 @@ function initChart() {
     grid: { top: 20, right: 20, bottom: 40, left: 60 },
     xAxis: {
       name: '客单价 (¥)',
-      nameLocation: 'center',
+      nameLocation: 'middle' as const,
       nameGap: 25,
       nameTextStyle: { color: '#8b949e' },
-      axisLine: { lineStyle: { color: '#30363d' } },
+      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
       axisLabel: { color: '#8b949e' },
-      splitLine: { lineStyle: { color: 'rgba(48, 54, 61, 0.5)' } },
+      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.05)' } },
     },
     yAxis: {
       name: '订单量',
       nameTextStyle: { color: '#8b949e' },
-      axisLine: { lineStyle: { color: '#30363d' } },
+      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
       axisLabel: { color: '#8b949e' },
-      splitLine: { lineStyle: { color: 'rgba(48, 54, 61, 0.5)' } },
+      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.05)' } },
     },
     series: [
       {
@@ -90,13 +90,31 @@ watch(
 </script>
 
 <style scoped lang="less">
+@import '@/styles/variables.less';
+
 .chart-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: @bg-card;
+  border: 1px solid @border-color;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: @gradient-primary;
+    opacity: 0.5;
+  }
 }
 .chart-body {
   flex: 1;
   min-height: 0;
+  position: relative;
 }
 </style>

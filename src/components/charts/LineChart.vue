@@ -1,7 +1,7 @@
 <template>
-  <div class="chart-wrapper dashboard-card">
+  <div class="chart-wrapper">
     <SectionTitle :title="title" />
-    <div ref="chartRef" class="chart-body"></div>
+    <div ref="chartRef" class="chart-body" />
   </div>
 </template>
 
@@ -34,12 +34,12 @@ function initChart() {
     xAxis: {
       type: 'category',
       data: props.data.map((d) => d.date),
-      axisLine: { lineStyle: { color: '#30363d' } },
+      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
       axisLabel: { color: '#8b949e', fontSize: 11 },
     },
     yAxis: {
       type: 'value',
-      splitLine: { lineStyle: { color: 'rgba(48, 54, 61, 0.5)' } },
+      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.05)' } },
       axisLabel: { color: '#8b949e' },
     },
     series: [
@@ -49,12 +49,12 @@ function initChart() {
         smooth: true,
         symbol: 'circle',
         symbolSize: 6,
-        lineStyle: { width: 3, color: '#91cc75' },
-        itemStyle: { color: '#91cc75' },
+        lineStyle: { width: 3, color: '#00b4d8' },
+        itemStyle: { color: '#00b4d8' },
         areaStyle: {
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: 'rgba(145, 204, 117, 0.3)' },
-            { offset: 1, color: 'rgba(145, 204, 117, 0.02)' },
+            { offset: 0, color: 'rgba(0, 180, 216, 0.3)' },
+            { offset: 1, color: 'rgba(0, 180, 216, 0.02)' },
           ]),
         },
       },
@@ -91,13 +91,31 @@ watch(
 </script>
 
 <style scoped lang="less">
+@import '@/styles/variables.less';
+
 .chart-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: @bg-card;
+  border: 1px solid @border-color;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: @gradient-primary;
+    opacity: 0.5;
+  }
 }
 .chart-body {
   flex: 1;
   min-height: 0;
+  position: relative;
 }
 </style>

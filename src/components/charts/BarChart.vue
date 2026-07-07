@@ -1,7 +1,7 @@
 <template>
-  <div class="chart-wrapper dashboard-card">
+  <div class="chart-wrapper">
     <SectionTitle :title="title" />
-    <div ref="chartRef" class="chart-body"></div>
+    <div ref="chartRef" class="chart-body" />
   </div>
 </template>
 
@@ -35,12 +35,12 @@ function initChart() {
     xAxis: {
       type: 'category',
       data: props.data.map((d) => d.date),
-      axisLine: { lineStyle: { color: '#30363d' } },
+      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
       axisLabel: { color: '#8b949e', fontSize: 11 },
     },
     yAxis: {
       type: 'value',
-      splitLine: { lineStyle: { color: 'rgba(48, 54, 61, 0.5)' } },
+      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.05)' } },
       axisLabel: {
         color: '#8b949e',
         formatter: (v: number) => (v >= 1000 ? `${(v / 1000).toFixed(0)}k` : `${v}`),
@@ -53,13 +53,13 @@ function initChart() {
         itemStyle: {
           borderRadius: [4, 4, 0, 0],
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: '#5470c6' },
-            { offset: 1, color: 'rgba(84, 112, 198, 0.2)' },
+            { offset: 0, color: '#0099cc' },
+            { offset: 1, color: 'rgba(0, 180, 216, 0.2)' },
           ]),
         },
         barWidth: '50%',
         emphasis: {
-          itemStyle: { color: '#58a6ff' },
+          itemStyle: { color: '#00b4d8' },
         },
       },
     ],
@@ -82,19 +82,41 @@ onUnmounted(() => {
   chart?.dispose();
 });
 
-watch(() => props.data, () => chart?.setOption({ series: [{ data: props.data.map((d) => d.value) }] }), {
-  deep: true,
-});
+watch(
+  () => props.data,
+  () => chart?.setOption({ series: [{ data: props.data.map((d) => d.value) }] }),
+  {
+    deep: true,
+  },
+);
 </script>
 
 <style scoped lang="less">
+@import '@/styles/variables.less';
+
 .chart-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: @bg-card;
+  border: 1px solid @border-color;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: @gradient-primary;
+    opacity: 0.5;
+  }
 }
 .chart-body {
   flex: 1;
   min-height: 0;
+  position: relative;
 }
 </style>

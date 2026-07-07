@@ -1,6 +1,14 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import type { DashboardData, OverviewData, TrendPoint, CategoryItem, ScatterPoint, PerformanceData } from '@/types/dashboard';
+import type {
+  DashboardData,
+  OverviewData,
+  TrendPoint,
+  CategoryItem,
+  ScatterPoint,
+  PerformanceData,
+  HubNode,
+} from '@/types/dashboard';
 import { dashboardApi } from '@/api/dashboard';
 import { logger } from '@/logger';
 
@@ -11,6 +19,7 @@ export const useDashboardStore = defineStore('dashboard', () => {
   const categorySales = ref<CategoryItem[]>([]);
   const orderScatter = ref<ScatterPoint[]>([]);
   const performanceRadar = ref<PerformanceData | null>(null);
+  const hubNodes = ref<HubNode[]>([]);
   const loading = ref(false);
   const lastUpdateTime = ref('');
   const error = ref<string | null>(null);
@@ -32,6 +41,7 @@ export const useDashboardStore = defineStore('dashboard', () => {
       categorySales.value = data.categorySales;
       orderScatter.value = data.orderScatter;
       performanceRadar.value = data.performanceRadar;
+      hubNodes.value = data.hubNodes;
       lastUpdateTime.value = new Date().toLocaleTimeString('zh-CN');
       logger.info('DashboardStore', 'Data loaded successfully');
     } catch (err) {
@@ -49,6 +59,7 @@ export const useDashboardStore = defineStore('dashboard', () => {
     categorySales,
     orderScatter,
     performanceRadar,
+    hubNodes,
     loading,
     lastUpdateTime,
     error,

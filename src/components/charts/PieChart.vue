@@ -1,7 +1,7 @@
 <template>
-  <div class="chart-wrapper dashboard-card">
+  <div class="chart-wrapper">
     <SectionTitle :title="title" />
-    <div ref="chartRef" class="chart-body"></div>
+    <div ref="chartRef" class="chart-body" />
   </div>
 </template>
 
@@ -45,12 +45,12 @@ function initChart() {
         avoidLabelOverlap: false,
         itemStyle: {
           borderRadius: 4,
-          borderColor: '#0a0e27',
+          borderColor: '#0a1628',
           borderWidth: 3,
         },
         label: { show: false },
         emphasis: {
-          label: { show: true, fontSize: 14, fontWeight: 'bold' },
+          label: { show: true, fontSize: 14, fontWeight: 'bold', color: '#e6edf3' },
           scaleSize: 10,
         },
         data: props.data,
@@ -83,13 +83,31 @@ watch(
 </script>
 
 <style scoped lang="less">
+@import '@/styles/variables.less';
+
 .chart-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: @bg-card;
+  border: 1px solid @border-color;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: @gradient-primary;
+    opacity: 0.5;
+  }
 }
 .chart-body {
   flex: 1;
   min-height: 0;
+  position: relative;
 }
 </style>

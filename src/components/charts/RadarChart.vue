@@ -1,7 +1,7 @@
 <template>
-  <div class="chart-wrapper dashboard-card">
+  <div class="chart-wrapper">
     <SectionTitle :title="title" />
-    <div ref="chartRef" class="chart-body"></div>
+    <div ref="chartRef" class="chart-body" />
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 import { ref, onMounted, watch, onUnmounted } from 'vue';
 import * as echarts from 'echarts';
 import SectionTitle from '@/components/common/SectionTitle.vue';
-import { darkTheme } from '@/utils/echarts';
+import { darkTheme, tooltipStyle } from '@/utils/echarts';
 import type { RadarIndicator } from '@/types/dashboard';
 
 const props = defineProps<{
@@ -26,15 +26,21 @@ function initChart() {
   chart = echarts.init(chartRef.value, darkTheme);
 
   const option: echarts.EChartsOption = {
-    tooltip: {},
+    tooltip: {
+      backgroundColor: tooltipStyle.backgroundColor,
+      borderColor: tooltipStyle.borderColor,
+      textStyle: tooltipStyle.textStyle,
+    },
     radar: {
       center: ['50%', '55%'],
       radius: '65%',
       indicator: props.indicators,
       axisName: { color: '#8b949e', fontSize: 11 },
       splitArea: {
-        areaStyle: { color: ['rgba(84, 112, 198, 0.05)', 'rgba(84, 112, 198, 0.1)'] },
+        areaStyle: { color: ['rgba(0, 180, 216, 0.05)', 'rgba(0, 180, 216, 0.1)'] },
       },
+      axisLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.2)' } },
+      splitLine: { lineStyle: { color: 'rgba(0, 180, 216, 0.1)' } },
     },
     series: [
       {
@@ -43,9 +49,9 @@ function initChart() {
           {
             value: props.values,
             name: '当前表现',
-            areaStyle: { color: 'rgba(145, 204, 117, 0.2)' },
-            lineStyle: { color: '#91cc75', width: 2 },
-            itemStyle: { color: '#91cc75' },
+            areaStyle: { color: 'rgba(0, 212, 170, 0.2)' },
+            lineStyle: { color: '#00d4aa', width: 2 },
+            itemStyle: { color: '#00d4aa' },
           },
         ],
       },
@@ -82,13 +88,31 @@ watch(
 </script>
 
 <style scoped lang="less">
+@import '@/styles/variables.less';
+
 .chart-wrapper {
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: @bg-card;
+  border: 1px solid @border-color;
+  border-radius: 8px;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: @gradient-primary;
+    opacity: 0.5;
+  }
 }
 .chart-body {
   flex: 1;
   min-height: 0;
+  position: relative;
 }
 </style>

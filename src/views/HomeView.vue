@@ -12,20 +12,25 @@
         />
       </div>
 
-      <div class="chart-row">
-        <LineChart title="月度销售趋势" :data="store.salesTrend" />
-        <BarChart title="月度用户增长" :data="store.userGrowth" />
+      <div class="main-section">
+        <div class="center-hub">
+          <HubOverviewChart title="数据中枢" :data="store.hubNodes" />
+        </div>
+        <div class="side-charts">
+          <LineChart title="月度销售趋势" :data="store.salesTrend" />
+          <BarChart title="月度用户增长" :data="store.userGrowth" />
+        </div>
       </div>
 
-      <div class="chart-row three-col">
+      <div class="bottom-row">
         <PieChart title="品类销售分布" :data="store.categorySales" />
-        <ScatterChart title="客单价与订单量关系" :data="store.orderScatter" />
         <RadarChart
           v-if="store.performanceRadar"
           title="综合绩效雷达"
           :indicators="store.performanceRadar.indicators"
           :values="store.performanceRadar.values"
         />
+        <ScatterChart title="客单价分布" :data="store.orderScatter" />
       </div>
     </div>
   </DashboardLayout>
@@ -40,6 +45,7 @@ import BarChart from '@/components/charts/BarChart.vue';
 import PieChart from '@/components/charts/PieChart.vue';
 import ScatterChart from '@/components/charts/ScatterChart.vue';
 import RadarChart from '@/components/charts/RadarChart.vue';
+import HubOverviewChart from '@/components/charts/HubOverviewChart.vue';
 import { useDashboardStore } from '@/stores/dashboard';
 import { useDataRefresh } from '@/composables/useDataRefresh';
 import { logger } from '@/logger';
@@ -49,7 +55,7 @@ const store = useDashboardStore();
 useDataRefresh(() => {
   logger.info('HomeView', 'Auto refresh triggered');
   store.fetchAllData();
-}, 30000);
+}, 5000);
 
 onMounted(() => {
   store.fetchAllData();
@@ -82,17 +88,32 @@ const overviewCards = computed(() => {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: @spacing-md;
+  height: 120px;
 }
 
-.chart-row {
+.main-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: @spacing-md;
   flex: 1;
   min-height: 0;
+}
 
-  &.three-col {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+.center-hub {
+  min-height: 0;
+}
+
+.side-charts {
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-md;
+  min-height: 0;
+}
+
+.bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: @spacing-md;
+  height: 280px;
 }
 </style>

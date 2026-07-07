@@ -21,6 +21,15 @@ export interface ScatterPoint {
   name: string;
 }
 
+export interface HubNode {
+  id: string;
+  name: string;
+  value: number;
+  coord: [number, number];
+  status: 'good' | 'warning' | 'danger';
+  description: string;
+}
+
 export interface RadarIndicator {
   name: string;
   max: number;
@@ -38,4 +47,5 @@ export interface DashboardData {
   categorySales: CategoryItem[];
   orderScatter: ScatterPoint[];
   performanceRadar: PerformanceData;
+  hubNodes: HubNode[];
 }
