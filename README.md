@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/badge/Vue-3.4-0099cc?logo=vuedotjs&logoColor=white" alt="Vue">
   <img src="https://img.shields.io/badge/TypeScript-5.4-3178c6?logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/ECharts-5.5-aa344d?logo=apacheecharts&logoColor=white" alt="ECharts">
-  <img src="https://img.shields.io/badge/license-MIT-00d4aa" alt="License">
+  <img src="https://img.shields.io/badge/license-MIT-8b5cf6" alt="License">
 </h1>
 
 # VisBridge · 视界之桥
@@ -26,7 +26,7 @@
 | **从零构建** | 从 `npm create vite` 开始，逐步搭建到完整大屏交付 |
 | **模拟真实业务** | 基于 MSW 的实时数据状态机，每 5 秒模拟业务数据波动 |
 | **13 类可视化图表** | 中心枢纽态势图、折线、柱状、饼图、散点、雷达 + 实时指标卡 |
-| **国风科技蓝视觉** | 深蓝基底 + 青蓝高亮 + 玉青/鎏金点缀，克制而高级 |
+| **暗夜紫金视觉** | 深邃暗紫基底 + 紫罗兰高亮 + 琥珀鎏金点缀，奢华而高级 |
 | **模块化工程** | TypeScript 类型约束、Pinia 状态管理、ECharts 封装复用 |
 | **工程化体系** | ESLint + Prettier + Husky + commitlint + Vitest 完整配套 |
 
@@ -107,7 +107,7 @@ VisBridge/
 │   ├── stores/
 │   │   └── dashboard.ts        # Pinia 大屏数据 Store
 │   ├── styles/
-│   │   ├── variables.less      # 国风科技蓝 CSS 变量
+│   │   ├── variables.less      # 暗夜紫金 CSS 变量
 │   │   ├── reset.less          # 重置样式 + 科技网格背景
 │   │   └── global.less         # 全局样式
 │   ├── types/
@@ -144,23 +144,23 @@ VisBridge/
 
 ---
 
-## 设计理念：国风科技蓝
+## 设计理念：暗夜紫金
 
-整体视觉以「东方国风审美 × 现代科技大屏」为基线：
+整体视觉以「深邃暗紫 × 琥珀鎏金」为基线，兼具奢华感与科技感：
 
-- **主背景**：深蓝 `#0a1628` / 墨蓝 `#0d2137`，叠加 60px 间距科技网格
-- **主高亮**：青蓝 `#0099cc` / 湖蓝 `#00b4d8` / 冰蓝 `#48cae4`
-- **辅助点缀**：玉青 `#00d4aa` / 鎏金 `#fac858`，仅用于状态区分
+- **主背景**：暗紫 `#0f0b1e` / 深紫 `#1a1233`，叠加 60px 间距科技网格
+- **主高亮**：紫罗兰 `#8b5cf6` / 淡紫 `#a78bfa` / 浅紫 `#c4b5fd`
+- **辅助点缀**：琥珀 `#f59e0b` / 鎏金 `#fbbf24`，仅用于状态区分
 - **面板装饰**：顶部渐变光带、四角窗棂角标、发光边框
-- **中心枢纽**：径向渐变脉冲节点 + 流光数据链路 + 涟漪效果
-- **克制原则**：装饰服务于数据可读性，不做纯古风或过度赛博风
+- **中心枢纽**：紫色径向渐变脉冲节点 + 流光数据链路 + 涟漪效果
+- **克制原则**：装饰服务于数据可读性，不做过度炫技
 
 | 颜色色板 | 预览 |
 |----------|------|
-| 深蓝基底 | `#0a1628` `#0d2137` `#0f2c4a` |
-| 青蓝高亮 | `#0099cc` `#00b4d8` `#48cae4` |
-| 玉青点缀 | `#00d4aa` |
-| 鎏金告警 | `#fac858` |
+| 暗紫基底 | `#0f0b1e` `#1a1233` `#1e1638` |
+| 紫罗兰高亮 | `#8b5cf6` `#a78bfa` `#c4b5fd` |
+| 琥珀点缀 | `#f59e0b` |
+| 鎏金告警 | `#fbbf24` |
 | 危险红色 | `#ee6666` |
 
 ---
@@ -176,7 +176,7 @@ VisBridge/
 5. **雷达图** — 多维指标 ECharts radar 实现
 6. **中心枢纽图** — effectScatter + lines + scatter 组合，流光连线 + 脉冲节点
 7. **实时数据模拟** — 模块级状态机 + 增量数据变化 + 自动刷新
-8. **视觉统一** — CSS 变量主题系统、国风科技蓝整体升级
+8. **视觉统一** — CSS 变量主题系统、暗夜紫金整体升级
 9. **测试编写** — Vitest + @vue/test-utils 单元测试
 10. **生产构建** — TypeScript 类型检查 + Vite 打包优化
 
